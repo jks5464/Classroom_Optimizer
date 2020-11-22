@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 #uncomment when deploy
-#import django_heroku
+import django_heroku
 
 from pathlib import Path
 
@@ -124,4 +124,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ##uncomment when deploy
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
