@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "classoptimizer:classroomOptimizer.views.home (python3.7)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "",
+                "lambdaHandler": "classroomOptimizer.views.home"
+            },
+            "lambda": {
+                "runtime": "python3.7",
+                "payload": {},
+                "environmentVariables": {}
+            }
+        }
+    ]
+}

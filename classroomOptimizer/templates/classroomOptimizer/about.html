@@ -1,4 +1,205 @@
 {% extends "classroomOptimizer/base.html" %}
 {% block content %}
-    <h1>About</h1>
+<main role="main" class="container">
+    <style>
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            width: 500px;
+            border: 1px solid black;
+        }
+        td {
+            height: 50px;
+            position: relative;
+            border: 1px solid black;
+        }
+        td .content {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+    <script>
+        var example = [
+            [0,1,2,3,4,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0]
+        ];
+        localStorage.setItem("example", JSON.stringify(example));
+
+        function getExample()  
+        {  
+            var example = JSON.parse(localStorage.getItem("example"));
+            for(i = 0; i < 10; i++){
+                for(j = 0; j < 10; j++){
+                    if(example[i][j] == 0){
+                        var id = i + " " + j;
+                        document.getElementById(id).style.backgroundColor='White';
+                    }
+                    else if(example[i][j] == 1){
+                        var id = i + " " + j;
+                        document.getElementById(id).style.backgroundColor='Red';
+                    }
+                    else if(example[i][j] == 2){
+                        var id = i + " " + j;
+                        document.getElementById(id).style.backgroundColor='Green';
+                    }
+                    else if(example[i][j] == 3){
+                        var id = i + " " + j;
+                        document.getElementById(id).style.backgroundColor='Blue';
+                    }
+                    else if(example[i][j] == 4){
+                        var id = i + " " + j;
+                        document.getElementById(id).style.backgroundColor='Orange';
+                    }
+                }
+            }
+        }
+    </script>
+    <div class="content-section">
+        <p>
+            White = the area is empty and available
+            <br>
+            Red = the area is unavailable (has a column or wall or something not-movable)
+            <br>
+            Green = the area is occupied by a table
+            <br>
+            Blue = the area is occupied by a chair
+            <br>
+            Orange = the area is occupied by some equipment
+        </p>
+        <table>
+            <tr>
+                <td id="0 0" >&nbsp;</td>
+                <td id="0 1" >&nbsp;</td>
+                <td id="0 2" >&nbsp;</td>
+                <td id="0 3" >&nbsp;</td>
+                <td id="0 4" >&nbsp;</td>
+                <td id="0 5" >&nbsp;</td>
+                <td id="0 6" >&nbsp;</td>
+                <td id="0 7" >&nbsp;</td>
+                <td id="0 8" >&nbsp;</td>
+                <td id="0 9" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="1 0" >&nbsp;</td>
+                <td id="1 1" >&nbsp;</td>
+                <td id="1 2" >&nbsp;</td>
+                <td id="1 3" >&nbsp;</td>
+                <td id="1 4" >&nbsp;</td>
+                <td id="1 5" >&nbsp;</td>
+                <td id="1 6" >&nbsp;</td>
+                <td id="1 7" >&nbsp;</td>
+                <td id="1 8" >&nbsp;</td>
+                <td id="1 9" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="2 0" >&nbsp;</td>
+                <td id="2 1" >&nbsp;</td>
+                <td id="2 2" >&nbsp;</td>
+                <td id="2 3" >&nbsp;</td>
+                <td id="2 4" >&nbsp;</td>
+                <td id="2 5" >&nbsp;</td>
+                <td id="2 6" >&nbsp;</td>
+                <td id="2 7" >&nbsp;</td>
+                <td id="2 8" >&nbsp;</td>
+                <td id="2 9" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="3 0" >&nbsp;</td>
+                <td id="3 1" >&nbsp;</td>
+                <td id="3 2" >&nbsp;</td>
+                <td id="3 3" >&nbsp;</td>
+                <td id="3 4" >&nbsp;</td>
+                <td id="3 5" >&nbsp;</td>
+                <td id="3 6" >&nbsp;</td>
+                <td id="3 7" >&nbsp;</td>
+                <td id="3 8" >&nbsp;</td>
+                <td id="3 9" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="4 0" >&nbsp;</td>
+                <td id="4 1" >&nbsp;</td>
+                <td id="4 2" >&nbsp;</td>
+                <td id="4 3" >&nbsp;</td>
+                <td id="4 4" >&nbsp;</td>
+                <td id="4 5" >&nbsp;</td>
+                <td id="4 6" >&nbsp;</td>
+                <td id="4 7" >&nbsp;</td>
+                <td id="4 8" >&nbsp;</td>
+                <td id="4 9" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="5 0" >&nbsp;</td>
+                <td id="5 1" >&nbsp;</td>
+                <td id="5 2" >&nbsp;</td>
+                <td id="5 3" >&nbsp;</td>
+                <td id="5 4" >&nbsp;</td>
+                <td id="5 5" >&nbsp;</td>
+                <td id="5 6" >&nbsp;</td>
+                <td id="5 7" >&nbsp;</td>
+                <td id="5 8" >&nbsp;</td>
+                <td id="5 9" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="6 0" >&nbsp;</td>
+                <td id="6 1" >&nbsp;</td>
+                <td id="6 2" >&nbsp;</td>
+                <td id="6 3" >&nbsp;</td>
+                <td id="6 4" >&nbsp;</td>
+                <td id="6 5" >&nbsp;</td>
+                <td id="6 6" >&nbsp;</td>
+                <td id="6 7" >&nbsp;</td>
+                <td id="6 8" >&nbsp;</td>
+                <td id="6 9" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="7 0" >&nbsp;</td>
+                <td id="7 1" >&nbsp;</td>
+                <td id="7 2" >&nbsp;</td>
+                <td id="7 3" >&nbsp;</td>
+                <td id="7 4" >&nbsp;</td>
+                <td id="7 5" >&nbsp;</td>
+                <td id="7 6" >&nbsp;</td>
+                <td id="7 7" >&nbsp;</td>
+                <td id="7 8" >&nbsp;</td>
+                <td id="7 9" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="8 0" >&nbsp;</td>
+                <td id="8 1" >&nbsp;</td>
+                <td id="8 2" >&nbsp;</td>
+                <td id="8 3" >&nbsp;</td>
+                <td id="8 4" >&nbsp;</td>
+                <td id="8 5" >&nbsp;</td>
+                <td id="8 6" >&nbsp;</td>
+                <td id="8 7" >&nbsp;</td>
+                <td id="8 8" >&nbsp;</td>
+                <td id="8 9" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td id="9 0" >&nbsp;</td>
+                <td id="9 1" >&nbsp;</td>
+                <td id="9 2" >&nbsp;</td>
+                <td id="9 3" >&nbsp;</td>
+                <td id="9 4" >&nbsp;</td>
+                <td id="9 5" >&nbsp;</td>
+                <td id="9 6" >&nbsp;</td>
+                <td id="9 7" >&nbsp;</td>
+                <td id="9 8" >&nbsp;</td>
+                <td id="9 9" >&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+    <input type="button" onclick="getExample()" value="Example"/>
+</main>
 {% endblock content %}
