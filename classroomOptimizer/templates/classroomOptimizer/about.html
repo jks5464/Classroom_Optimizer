@@ -22,23 +22,9 @@
         }
     </style>
     <script>
-        var example = [
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,2,2,0,0,0,0,2,2,0],
-            [0,0,3,0,0,0,0,0,3,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,4,4,0,0,0],
-            [0,0,0,0,0,4,1,1,1,1],
-            [0,0,3,2,0,0,1,1,1,1],
-            [0,0,0,2,0,0,1,1,1,1],
-            [0,0,0,0,0,0,1,1,1,1]
-        ];
-        localStorage.setItem("example", JSON.stringify(example));
-
         function getExample()  
         {  
-            var example = JSON.parse(localStorage.getItem("example"));
+            var example = JSON.parse("{{classroom}}");
             for(i = 0; i < 10; i++){
                 for(j = 0; j < 10; j++){
                     if(example[i][j] == 0){
@@ -199,7 +185,10 @@
                 <td id="9 9" >&nbsp;</td>
             </tr>
         </table>
+        <script>
+            getExample();
+        </script>
     </div>
-    <input type="button" onclick="getExample()" value="Example"/>
+    <input type="button" onclick="window.location.href='/test_function'" value="Example"/>
 </main>
 {% endblock content %}
