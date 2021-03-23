@@ -83,15 +83,13 @@
             var tableL = document.getElementById("tableL").value;
             var tableW = document.getElementById("tableW").value;
             var numChairs = document.getElementById("numChairs").value;
-            var chairL = document.getElementById("chairL").value;
-            var chairW = document.getElementById("chairW").value;
-            var numEquip = document.getElementById("numEquip").value;
-            var equipL = document.getElementById("equipL").value;
-            var equipW = document.getElementById("equipW").value;
+            //var numEquip = document.getElementById("numEquip").value;
+            //var equipL = document.getElementById("equipL").value;
+            //var equipW = document.getElementById("equipW").value;
 
             var numThings = tableL + "x" + tableW + " Tables = " + numTables + "\n";
-            numThings = numThings + chairL + "x" + chairW + " Chairs = " + numChairs + "\n";
-            numThings = numThings + equipL + "x" + equipW + " Equipment = " + numEquip + "\n";
+            numThings = numThings + " Chairs = " + numChairs + "\n";
+            //numThings = numThings + equipL + "x" + equipW + " Equipment = " + numEquip + "\n";
 
             alert(numThings + "Array = \n" + parsed);
         }
@@ -225,6 +223,18 @@
             <td id="9-8" onclick="ChangeColor(id)">&nbsp;</td>
             <td id="9-9" onclick="ChangeColor(id)">&nbsp;</td>
         </tr>
+        <tr>
+            <td id="10-0" onclick="ChangeColor(id)">&nbsp;</td>
+            <td id="10-1" onclick="ChangeColor(id)">&nbsp;</td>
+            <td id="10-2" onclick="ChangeColor(id)">&nbsp;</td>
+            <td id="10-3" onclick="ChangeColor(id)">&nbsp;</td>
+            <td id="10-4" onclick="ChangeColor(id)">&nbsp;</td>
+            <td id="10-5" onclick="ChangeColor(id)">&nbsp;</td>
+            <td id="10-6" onclick="ChangeColor(id)">&nbsp;</td>
+            <td id="10-7" onclick="ChangeColor(id)">&nbsp;</td>
+            <td id="10-8" onclick="ChangeColor(id)">&nbsp;</td>
+            <td id="10-9" onclick="ChangeColor(id)">&nbsp;</td>
+        </tr>
     </table>
 </div>
 {% endfor %}
@@ -234,38 +244,33 @@
             <h3>Inputs</h3>
             <p class='text-muted'>Enter the number of tables and chairs
             <ul class="list-group">
-                <label>Tables</label>
-                <input id="numTables" placeholder="Enter number of Tables" value="0"/>
-                <label>Length x Width of Tables</label>
-                <div style="margin: 5px;">
-                    <input id="tableL" placeholder="Length" style="width: 75px" value="0"/>
+                <form action=about/ method=POST>
+                    {% csrf_token %}
+                    Tables<br>
+                    <input name="numTables" placeholder="Enter number of Tables"/><br>
+                    Length x Width of Tables<br>
+                    <input name="tableL" placeholder="Length" style="width: 75px"/>
                     ft x
-                    <input id="tableW" placeholder="Width" style="width: 75px" value="0"/>
+                    <input name="tableW" placeholder="Width" style="width: 75px"/>
                     ft
-                </div>
-                <br>
-                <label>Chairs</label>
-                <input id="numChairs" placeholder="Enter number of Chairs" value="0"/>
-                <label>Length x Width of Chairs</label>
-                <div style="margin: 5px;">
-                    <input id="chairL" placeholder="Length" style="width: 75px" value="0"/>
-                    ft x
-                    <input id="chairW" placeholder="Width" style="width: 75px" value="0"/>
-                    ft
-                </div>
-                <br>
-                <label>Equipment</label>
-                <input id="numEquip" placeholder="Enter number of Equipment" value="0"/>
-                <label>Length x Width of Equipment</label>
-                <div style="margin: 5px;">
-                    <input id="equipL" placeholder="Length" style="width: 75px" value="0"/>
-                    ft x
-                    <input id="equipW" placeholder="Width" style="width: 75px" value="0"/>
-                    ft
-                </div>
-                <br>
-                <br>
-                <input type="button" value="Optimize!" onclick="displayClass()">
+                    <br><br>
+                    Chairs<br>
+                    <input name="numChairs" placeholder="Enter number of Chairs"/>
+                    <!--<br>
+                    <label>Equipment</label>
+                    <input id="numEquip" placeholder="Enter number of Equipment" value="0"/>
+                    <label>Length x Width of Equipment</label>
+                    <div style="margin: 5px;">
+                        <input id="equipL" placeholder="Length" style="width: 75px" value="0"/>
+                        ft x
+                        <input id="equipW" placeholder="Width" style="width: 75px" value="0"/>
+                        ft
+                    </div>
+                    <br>-->
+                    <br>
+                    <br>
+                    <input type="submit">
+                </form>
             </ul>
             </p>
         </div>

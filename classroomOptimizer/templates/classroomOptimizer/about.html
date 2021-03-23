@@ -25,8 +25,8 @@
         function getExample()  
         {  
             var example = JSON.parse("{{classroom}}");
-            for(i = 0; i < 10; i++){
-                for(j = 0; j < 10; j++){
+            for(i = 0; i < example.length; i++){
+                for(j = 0; j < example[i].length; j++){
                     if(example[i][j] == 0){
                         var id = i + " " + j;
                         document.getElementById(id).style.backgroundColor='White';
@@ -184,11 +184,22 @@
                 <td id="9 8" >&nbsp;</td>
                 <td id="9 9" >&nbsp;</td>
             </tr>
+            <tr>
+                <td id="10 0" >&nbsp;</td>
+                <td id="10 1" >&nbsp;</td>
+                <td id="10 2" >&nbsp;</td>
+                <td id="10 3" >&nbsp;</td>
+                <td id="10 4" >&nbsp;</td>
+                <td id="10 5" >&nbsp;</td>
+                <td id="10 6" >&nbsp;</td>
+                <td id="10 7" >&nbsp;</td>
+                <td id="10 8" >&nbsp;</td>
+                <td id="10 9" >&nbsp;</td>
+            </tr>
         </table>
         <script>
             getExample();
         </script>
     </div>
-    <input type="button" onclick="window.location.href='/test_function'" value="Example"/>
 </main>
 {% endblock content %}
