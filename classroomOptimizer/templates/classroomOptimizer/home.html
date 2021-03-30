@@ -50,13 +50,14 @@
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0]
         ];
         localStorage.setItem("available", JSON.stringify(available));
         function ChangeColor(id)  
         {  
             //var available = parseInt(localStorage.available);
-            var available = JSON.parse(localStorage.getItem("available"));
+            available = JSON.parse(localStorage.getItem("available"));
             var index = id.split("-");
             if(available[index[0]][index[1]] == 0){
                 document.getElementById(id).style.backgroundColor='Red';
@@ -102,140 +103,10 @@
         <br>
         Red = the area is unavailable (has a column or wall or something not-movable).
     </p>
-    <table>
-        <tr>
-            <td id="0-0" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="0-1" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="0-2" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="0-3" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="0-4" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="0-5" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="0-6" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="0-7" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="0-8" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="0-9" onclick="ChangeColor(id)">&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="1-0" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="1-1" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="1-2" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="1-3" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="1-4" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="1-5" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="1-6" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="1-7" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="1-8" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="1-9" onclick="ChangeColor(id)">&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="2-0" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="2-1" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="2-2" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="2-3" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="2-4" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="2-5" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="2-6" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="2-7" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="2-8" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="2-9" onclick="ChangeColor(id)">&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="3-0" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="3-1" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="3-2" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="3-3" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="3-4" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="3-5" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="3-6" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="3-7" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="3-8" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="3-9" onclick="ChangeColor(id)">&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="4-0" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="4-1" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="4-2" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="4-3" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="4-4" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="4-5" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="4-6" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="4-7" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="4-8" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="4-9" onclick="ChangeColor(id)">&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="5-0" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="5-1" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="5-2" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="5-3" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="5-4" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="5-5" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="5-6" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="5-7" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="5-8" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="5-9" onclick="ChangeColor(id)">&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="6-0" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="6-1" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="6-2" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="6-3" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="6-4" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="6-5" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="6-6" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="6-7" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="6-8" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="6-9" onclick="ChangeColor(id)">&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="7-0" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="7-1" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="7-2" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="7-3" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="7-4" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="7-5" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="7-6" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="7-7" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="7-8" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="7-9" onclick="ChangeColor(id)">&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="8-0" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="8-1" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="8-2" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="8-3" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="8-4" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="8-5" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="8-6" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="8-7" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="8-8" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="8-9" onclick="ChangeColor(id)">&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="9-0" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="9-1" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="9-2" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="9-3" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="9-4" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="9-5" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="9-6" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="9-7" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="9-8" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="9-9" onclick="ChangeColor(id)">&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="10-0" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="10-1" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="10-2" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="10-3" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="10-4" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="10-5" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="10-6" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="10-7" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="10-8" onclick="ChangeColor(id)">&nbsp;</td>
-            <td id="10-9" onclick="ChangeColor(id)">&nbsp;</td>
-        </tr>
-    </table>
+    <div class='col-md-4'>Height</div><div><input type='number' id='tableHeight' value='10'/></div>
+    <div class='col-md-4'>Width</div><div><input type='number' id='tableWidth' value='10'/></div>
+    <div class='col-md-4'>Update</div><div><button id='tableUpdate'>Update</button></div>
+    <table><tbody id="tbody"></tbody></table>
 </div>
 {% endfor %}
 </div>
@@ -244,7 +115,7 @@
             <h3>Inputs</h3>
             <p class='text-muted'>Enter the number of tables and chairs
             <ul class="list-group">
-                <form action=about/ method=POST>
+                <form action=about/ method=POST id="form">
                     {% csrf_token %}
                     Tables<br>
                     <input name="numTables" placeholder="Enter number of Tables"/><br>
@@ -256,7 +127,9 @@
                     <br><br>
                     Chairs<br>
                     <input name="numChairs" placeholder="Enter number of Chairs"/>
+                    <input type="hidden" name="available" value=""/>
                     <!--<br>
+                        
                     <label>Equipment</label>
                     <input id="numEquip" placeholder="Enter number of Equipment" value="0"/>
                     <label>Length x Width of Equipment</label>
@@ -269,7 +142,7 @@
                     <br>-->
                     <br>
                     <br>
-                    <input type="submit">
+                    <input type="submit" id="submit">
                 </form>
             </ul>
             </p>
@@ -277,5 +150,56 @@
     </div>
     </div>
 </main>
+
 {% endblock content %}
 
+{% block scripts %}
+
+<script>
+    function clickHandler(e) {
+        ChangeColor(e.target.id);
+    }
+    $(document).ready(function() {
+
+        buildTable(10, 10);
+        
+    });
+    
+    function buildTable(height, width) {
+        $("#tbody").html('');
+        $("#tbody").off("click", "td", clickHandler);
+       /* $("#tbody td").on('click', e => {
+             ChangeColor($(this).attr('id'))
+        });*/
+        
+
+        for(var i = 0 ; i < height ; i++) {
+            var tr = $("#tbody").append("<tr></tr>");
+            for(var j = 0 ; j < width ; j++) {
+                var td = tr.append(`<td id="${i}-${j}" style="height :25px; width 25px">&nbsp;</td>`);
+                
+            }
+        }
+        $("#tbody").on("click", "td", clickHandler);
+    }
+    
+    document.getElementById("tableUpdate").addEventListener("click",
+        e => { buildTable($("#tableHeight").val(), $("#tableWidth").val()) }
+    )
+    document.getElementById("submit").addEventListener("click", 
+        e => {
+            console.log(e); 
+            $("input[name=available]").val(JSON.stringify(available));
+           // e.preventDefault();
+            /*
+            var formData = {available: available,
+                numTable: $("input[name=numTables]").val(),
+                tableL: $("input[name=tableL]").val(),
+                tableW: $("input[name=tableW]").val(),
+                numChairs: $("input[name=numChairs]").val(),
+            }*/
+        });
+    document.getElementById("form").addEventListener("sumbit",
+    e =>  { e.preventDefault() })
+</script>
+{% endblock scripts %}

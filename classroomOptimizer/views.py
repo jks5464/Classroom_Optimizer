@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from scipy.optimize import minimize
 import math
+import json
 from random import *
 import numpy as np
 
@@ -48,21 +49,9 @@ def home(request):
     return render(request, 'classroomOptimizer/home.html', context)
 
 def about(request):
-    wallExample = [
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,1,1],
-    [0,0,0,0,0,0,0,0,1,1]
-    ]
-    classx = 10
-    classy = 11
+    wallExample = json.loads(request.POST.get('available'))
+    classx = len(wallExample[0])
+    classy = len(wallExample)
     wallsGrid = wallExample
     numChairs = int(request.POST['numChairs'])
     numTables = int(request.POST['numTables'])
@@ -75,7 +64,8 @@ def about(request):
     solutionIntoClass(sol)
     classdata = classroom
     print(classdata)
-    return render(request, 'classroomOptimizer/about.html', {'classroom': classdata})
+    return render(request, 'classroomOptimizer/about.html', 
+       {'classroom': classdata})
 
 
 def roundAngle(num):
