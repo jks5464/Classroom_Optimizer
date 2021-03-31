@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 #uncomment when deploy
-#import django_heroku
+import django_heroku
 
 from pathlib import Path
 
@@ -27,7 +27,10 @@ SECRET_KEY = 't$r%ivu4$x#5=lvi*5)v3!yn__(o)!)q4c@8%&d#b6%^30rc7q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '*',
+    'classoptimizer.herokuapp.com/'
+]
 
 
 # Application definition
@@ -124,4 +127,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ##uncomment when deploy
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
