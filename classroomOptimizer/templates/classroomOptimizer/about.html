@@ -46,33 +46,32 @@
 <script>
     var example = JSON.parse("{{classroom}}");
     function getExample()  
-        {  
-            
-            for(i = 0; i < example.length; i++){
-                for(j = 0; j < example[i].length; j++){
-                    if(example[i][j] == 0){
-                        var id = i + " " + j;
-                        document.getElementById(id).style.backgroundColor='White';
-                    }
-                    else if(example[i][j] == 1){
-                        var id = i + " " + j;
-                        document.getElementById(id).style.backgroundColor='Red';
-                    }
-                    else if(example[i][j] == 2){
-                        var id = i + " " + j;
-                        document.getElementById(id).style.backgroundColor='Green';
-                    }
-                    else if(example[i][j] == 3){
-                        var id = i + " " + j;
-                        document.getElementById(id).style.backgroundColor='Blue';
-                    }
-                    else if(example[i][j] == 4){
-                        var id = i + " " + j;
-                        document.getElementById(id).style.backgroundColor='Orange';
-                    }
+    {  
+        for(i = 0; i < example.length; i++){
+            for(j = 0; j < example[i].length; j++){
+                if(example[i][j] == 0){
+                    var id = i + " " + j;
+                    document.getElementById(id).style.backgroundColor='White';
+                }
+                else if(example[i][j] == 1){
+                    var id = i + " " + j;
+                    document.getElementById(id).style.backgroundColor='Red';
+                }
+                else if(example[i][j] == 2){
+                    var id = i + " " + j;
+                    document.getElementById(id).style.backgroundColor='Green';
+                }
+                else if(example[i][j] == 3){
+                    var id = i + " " + j;
+                    document.getElementById(id).style.backgroundColor='Blue';
+                }
+                else if(example[i][j] == 4){
+                    var id = i + " " + j;
+                    document.getElementById(id).style.backgroundColor='Orange';
                 }
             }
         }
+    }
 
     $(document).ready(function() {
 
@@ -82,12 +81,6 @@
 
     function buildTable(height, width) {
         $("#tbody").html('');
-        //$("#tbody").off("click", "td", clickHandler);
-        /* $("#tbody td").on('click', e => {
-            ChangeColor($(this).attr('id'))
-        });*/
-
-
         for(var i = 0 ; i < height ; i++) {
             var tr = $("#tbody").append("<tr></tr>");
             for(var j = 0 ; j < width ; j++) {
@@ -95,7 +88,6 @@
                 
             }
         }
-        //$("#tbody").on("click", "td", clickHandler);
     }
 
 </script>

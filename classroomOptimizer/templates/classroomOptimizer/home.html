@@ -38,63 +38,7 @@
             right: 0;
         }
     </style>
-
-    <script language="javascript">  
-        var available = [
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0],
-            [0,0,0,0,0,0,0,0,0,0]
-        ];
-        localStorage.setItem("available", JSON.stringify(available));
-        function ChangeColor(id)  
-        {  
-            //var available = parseInt(localStorage.available);
-            available = JSON.parse(localStorage.getItem("available"));
-            var index = id.split("-");
-            if(available[index[0]][index[1]] == 0){
-                document.getElementById(id).style.backgroundColor='Red';
-                available[index[0]][index[1]] = 1;
-                localStorage.setItem("available", JSON.stringify(available));
-            }
-            else {
-                document.getElementById(id).style.backgroundColor='White';
-                available[index[0]][index[1]] = 0;
-                localStorage.setItem("available", JSON.stringify(available));
-            }
-        }
-
-        function displayClass()
-        {
-            var parsed = "";
-            var available = JSON.parse(localStorage.getItem("available"));
-            for (i = 0; i< available.length; i++) {
-                parsed = parsed + available[i] + "\n";
-            }
-            //parsed = parsed.replace(/\n/g, "<br />");
-
-            var numTables = document.getElementById("numTables").value;
-            var tableL = document.getElementById("tableL").value;
-            var tableW = document.getElementById("tableW").value;
-            var numChairs = document.getElementById("numChairs").value;
-            //var numEquip = document.getElementById("numEquip").value;
-            //var equipL = document.getElementById("equipL").value;
-            //var equipW = document.getElementById("equipW").value;
-
-            var numThings = tableL + "x" + tableW + " Tables = " + numTables + "\n";
-            numThings = numThings + " Chairs = " + numChairs + "\n";
-            //numThings = numThings + equipL + "x" + equipW + " Equipment = " + numEquip + "\n";
-
-            alert(numThings + "Array = \n" + parsed);
-        }
-    </script> 
+{% endfor %}
 <div class="content-section">
     <p>
         Please select classroom constraints. 
@@ -103,30 +47,33 @@
         <br>
         Red = the area is unavailable (has a column or wall or something not-movable).
     </p>
-    <div class='col-md-4'>Height</div><div><input type='number' id='tableHeight' value='10'/></div>
-    <div class='col-md-4'>Width</div><div><input type='number' id='tableWidth' value='10'/></div>
-    <div class='col-md-4'>Update</div><div><button id='tableUpdate'>Update</button></div>
+    <div class='col-md-4'>Height</div>
+    <div><input type='number' min='1' id='tableHeight' value='10'/></div>
+    <div class='col-md-4'>Width</div>
+    <div><input type='number' min='1' id='tableWidth' value='10'/></div>
+    <br>
+    <div><button id='tableUpdate'>Update and Clear</button></div>
+    <br>
     <table><tbody id="tbody"></tbody></table>
 </div>
-{% endfor %}
 </div>
     <div class="col-md-4">
         <div class="content-section">
             <h3>Inputs</h3>
             <p class='text-muted'>Enter the number of tables and chairs
-            <ul class="list-group">
+            <ul class="list-group"></ul>
                 <form action=about/ method=POST id="form">
                     {% csrf_token %}
                     Tables<br>
-                    <input name="numTables" placeholder="Enter number of Tables"/><br>
+                    <input type="number" min="0" name="numTables" value="0"/><br>
                     Length x Width of Tables<br>
-                    <input name="tableL" placeholder="Length" style="width: 75px"/>
+                    <input type="number" min="1" name="tableL" value="1" style="width: 75px"/>
                     ft x
-                    <input name="tableW" placeholder="Width" style="width: 75px"/>
+                    <input type="number" min="1" name="tableW" value="1" style="width: 75px"/>
                     ft
-                    <br><br>
+                    <br>
                     Chairs<br>
-                    <input name="numChairs" placeholder="Enter number of Chairs"/>
+                    <input type="number" min="1" name="numChairs" value="1"/>
                     <input type="hidden" name="available" value=""/>
                     <!--<br>
                         
@@ -148,7 +95,7 @@
             </p>
         </div>
     </div>
-    </div>
+</div>
 </main>
 
 {% endblock content %}
@@ -156,6 +103,7 @@
 {% block scripts %}
 
 <script>
+    var available = Array(10).fill().map(() => Array(10).fill(0));
     function clickHandler(e) {
         ChangeColor(e.target.id);
     }
@@ -177,12 +125,24 @@
             var tr = $("#tbody").append("<tr></tr>");
             for(var j = 0 ; j < width ; j++) {
                 var td = tr.append(`<td id="${i}-${j}" style="height :25px; width 25px">&nbsp;</td>`);
-                
             }
         }
         $("#tbody").on("click", "td", clickHandler);
     }
-    
+
+    function ChangeColor(id)  
+    {  
+        var index = id.split("-");
+        if(available[index[0]][index[1]] == 0){
+            document.getElementById(id).style.backgroundColor='Red';
+            available[index[0]][index[1]] = 1;
+        }
+        else {
+            document.getElementById(id).style.backgroundColor='White';
+            available[index[0]][index[1]] = 0;
+        }
+    }
+
     document.getElementById("tableUpdate").addEventListener("click",
         e => { buildTable($("#tableHeight").val(), $("#tableWidth").val()) }
     )
