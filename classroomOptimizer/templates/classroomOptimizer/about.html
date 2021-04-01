@@ -5,7 +5,7 @@
         table {
             margin-left: auto;
             margin-right: auto;
-            width: 500px;
+            width: 700px;
             border: 1px solid black;
         }
         td {
@@ -20,21 +20,38 @@
             left: 0;
             right: 0;
         }
+        .box {
+            height: 20px;
+            width: 20px;
+            border: 1px solid black;
+            display: inline-block;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .green {
+            background-color: green;
+        }
+        
+        .blue {
+            background-color: blue;
+        }
     </style>
     
         
     
     <div class="content-section">
         <p>
-            White = the area is empty and available
+            <div class="box"></div> &nbsp; = the area is empty and available
             <br>
-            Red = the area is unavailable (has a column or wall or something not-movable)
+            <div class="box red"></div> &nbsp; = the area unavailable (wall/blocked/etc)
             <br>
-            Green = the area is occupied by a table
+            <div class="box green"></div> &nbsp; = the area is occupied by a table
             <br>
-            Blue = the area is occupied by a chair
+            <div class="box blue"></div> &nbsp; = the area is occupied by a chair
             <br>
-            Orange = the area is occupied by some equipment
         </p>
         <table><tbody id="tbody"></tbody>
         
@@ -64,11 +81,11 @@
                 else if(example[i][j] == 3){
                     var id = i + " " + j;
                     document.getElementById(id).style.backgroundColor='Blue';
-                }
+                }/*
                 else if(example[i][j] == 4){
                     var id = i + " " + j;
                     document.getElementById(id).style.backgroundColor='Orange';
-                }
+                }*/
             }
         }
     }
@@ -80,11 +97,13 @@
     });
 
     function buildTable(height, width) {
+        var styleWidth = $("#tbody").width() / width;
+
         $("#tbody").html('');
         for(var i = 0 ; i < height ; i++) {
             var tr = $("#tbody").append("<tr></tr>");
             for(var j = 0 ; j < width ; j++) {
-                var td = tr.append(`<td id="${i} ${j}" style="height :25px; width 25px">&nbsp;</td>`);
+                var td = tr.append(`<td id="${i} ${j}" style="height : ${styleWidth}px; width ${styleWidth}px">&nbsp;</td>`);
                 
             }
         }

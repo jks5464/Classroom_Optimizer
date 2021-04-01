@@ -8,52 +8,74 @@
     <article class="media content-section">
         <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted }}</small>
+            <a class="mr-2">{{ post.author }}</a>
         </div>
-        <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+        <h2><a class="article-title">{{ post.title }}</a></h2>
         <p class="article-content">{{ post.content }}</p>
         </div>
     </article> 
-    <style>
-        table {
-            margin-left: auto;
-            margin-right: auto;
-            width: 500px;
-            border: 1px solid black;
-        }
-        td {
-            height: 50px;
-            position: relative;
-            border: 1px solid black;
-        }
-        td:hover {
-            background-color: pink;
-        }
-        td .content {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-    </style>
 {% endfor %}
+<style>
+    table {
+        margin-left: auto;
+        margin-right: auto;
+        width: 690px;
+        border: 1px solid black;
+    }
+    td {
+        position: relative;
+        border: 1px solid black;
+    }
+    td:hover {
+        background-color: pink;
+    }
+    td .content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    .box {
+        height: 20px;
+        width: 20px;
+        border: 1px solid black;
+        display: inline-block;
+    }
+    
+    .red {
+        background-color: red;
+    }
+    
+    .green {
+        background-color: green;
+    }
+    
+    .blue {
+        background-color: blue;
+    }
+    
+</style>
 <div class="content-section">
     <p>
-        Please select classroom constraints. 
+        <strong>Please select classroom constraints. </strong>
         <br>
-        White = the area is available.
+        <div class='box'></div> &nbsp; = the area is available
+        <br>        
+        <div class="box red"></div> &nbsp; = area is blocked (wall/structure/etc)
         <br>
-        Red = the area is unavailable (has a column or wall or something not-movable).
     </p>
-    <div class='col-md-4'>Height</div>
-    <div><input type='number' min='1' id='tableHeight' value='10'/></div>
-    <div class='col-md-4'>Width</div>
-    <div><input type='number' min='1' id='tableWidth' value='10'/></div>
-    <br>
-    <div><button id='tableUpdate'>Update and Clear</button></div>
-    <br>
+    <div style="text-align: center;">
+        Length (ft)   
+        <input type='number' min='1' max="40" id='tableHeight' value='10'/>
+        x Width (ft)
+        <input type='number' min='1' max="40" id='tableWidth' value='10'/>
+        <br>
+        <br>
+        <button id='tableUpdate'>Update and Clear</button>
+        <br>
+        <br>
+    </div>
     <table><tbody id="tbody"></tbody></table>
 </div>
 </div>
@@ -65,15 +87,15 @@
                 <form action=about/ method=POST id="form">
                     {% csrf_token %}
                     Tables<br>
-                    <input type="number" min="0" name="numTables" value="0"/><br>
+                    <input type="number" min="0" max="10" name="numTables" value="0"/><br>
                     Length x Width of Tables<br>
-                    <input type="number" min="1" name="tableL" value="1" style="width: 75px"/>
+                    <input type="number" min="1" max="10" name="tableL" value="1"/>
                     ft x
-                    <input type="number" min="1" name="tableW" value="1" style="width: 75px"/>
+                    <input type="number" min="1" max="10" name="tableW" value="1"/>
                     ft
                     <br>
                     Chairs<br>
-                    <input type="number" min="1" name="numChairs" value="1"/>
+                    <input type="number" min="1" max="10" name="numChairs" value="1"/>
                     <input type="hidden" name="available" value=""/>
                     <!--<br>
                         
@@ -114,17 +136,21 @@
     });
     
     function buildTable(height, width) {
+        //var row = parseInt(document.getElementById("tableHeight").value);
+        //var column = parseInt(document.getElementById("tableWidth").value);
+        available = Array(parseInt(height)).fill().map(() => Array(parseInt(width)).fill(0));
         $("#tbody").html('');
         $("#tbody").off("click", "td", clickHandler);
        /* $("#tbody td").on('click', e => {
              ChangeColor($(this).attr('id'))
         });*/
         
-
+        var styleWidth = $("#tbody").width() / width;
+        
         for(var i = 0 ; i < height ; i++) {
             var tr = $("#tbody").append("<tr></tr>");
             for(var j = 0 ; j < width ; j++) {
-                var td = tr.append(`<td id="${i}-${j}" style="height :25px; width 25px">&nbsp;</td>`);
+                var td = tr.append(`<td id="${i}-${j}" style="height : ${styleWidth}px; width ${styleWidth}px">&nbsp;</td>`);
             }
         }
         $("#tbody").on("click", "td", clickHandler);
